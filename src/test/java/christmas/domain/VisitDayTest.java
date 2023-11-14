@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class VisitDayTestUtils {
+class VisitDayTest {
 
     @Test
     @DisplayName("0이하면 오류")
