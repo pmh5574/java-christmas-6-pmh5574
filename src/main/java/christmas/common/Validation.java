@@ -16,7 +16,7 @@ public class Validation {
         }
     }
 
-    public static void VisitDayOnlyNumber(String inputData) {
+    public static void onlyNumber(String inputData) {
         if (!(inputData != null && inputData.matches(ONLY_NUMBER_CHECK))) {
             throw new IllegalArgumentException(ErrorMessage.ONLY_NUMBER.getMessage());
         }
