@@ -1,10 +1,10 @@
 package christmas.common;
 
+import static christmas.common.util.ErrorMessage.BLANK;
 import static christmas.common.util.ErrorMessage.NOT_VISIT_DAY;
+import static christmas.common.util.ErrorMessage.ONLY_NUMBER;
 import static christmas.common.util.VisitDayUtil.MONTH_FIRST;
 import static christmas.common.util.VisitDayUtil.MONTH_LAST;
-
-import christmas.common.util.ErrorMessage;
 
 public class Validation {
 
@@ -18,7 +18,13 @@ public class Validation {
 
     public static void onlyNumber(String inputData) {
         if (!(inputData != null && inputData.matches(ONLY_NUMBER_CHECK))) {
-            throw new IllegalArgumentException(ErrorMessage.ONLY_NUMBER.getMessage());
+            throw new IllegalArgumentException(ONLY_NUMBER.getMessage());
+        }
+    }
+
+    public static void blankCheck(String inputData) {
+        if (inputData.isEmpty()) {
+            throw new IllegalArgumentException(BLANK.getMessage());
         }
     }
 }
