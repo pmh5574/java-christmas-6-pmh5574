@@ -2,13 +2,12 @@ package christmas.common;
 
 import static christmas.common.util.ErrorMessage.BLANK;
 import static christmas.common.util.ErrorMessage.NOT_VISIT_DAY;
-import static christmas.common.util.ErrorMessage.ONLY_NUMBER;
 import static christmas.common.util.VisitDayUtil.MONTH_FIRST;
 import static christmas.common.util.VisitDayUtil.MONTH_LAST;
 
 public class Validation {
 
-    private static final String ONLY_NUMBER_CHECK = "[-+]?\\d*\\.?\\d+";
+    private static final String ONLY_NUMBER_CHECK = "\\\\d+";
 
     public static void VisitDayMonth(int inputData) {
         if (MONTH_FIRST.getNumber() > inputData || MONTH_LAST.getNumber() < inputData) {
@@ -16,9 +15,9 @@ public class Validation {
         }
     }
 
-    public static void onlyNumber(String inputData) {
+    public static void onlyNumber(String inputData, String errorMessage) {
         if (!(inputData != null && inputData.matches(ONLY_NUMBER_CHECK))) {
-            throw new IllegalArgumentException(ONLY_NUMBER.getMessage());
+            throw new IllegalArgumentException(errorMessage);
         }
     }
 

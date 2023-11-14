@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import static christmas.common.util.ErrorMessage.VISIT_ONLY_NUMBER;
+
 import christmas.common.Validation;
 
 public class VisitDay {
@@ -12,6 +14,6 @@ public class VisitDay {
 
     private void validate(int day) {
         Validation.VisitDayMonth(day);
-        Validation.onlyNumber(String.valueOf(day));
+        Validation.onlyNumber(String.valueOf(day), VISIT_ONLY_NUMBER.getMessage());
     }
 }
