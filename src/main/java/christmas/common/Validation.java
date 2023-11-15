@@ -21,9 +21,9 @@ public class Validation {
         }
     }
 
-    public static void onlyNumber(String inputData) {
+    public static void onlyNumber(String inputData, String message) {
         if (!(inputData != null && inputData.matches(ONLY_NUMBER_CHECK))) {
-            throw new IllegalArgumentException(NOT_USE_MENU.getMessage());
+            throw new IllegalArgumentException();
         }
     }
 
