@@ -8,6 +8,10 @@ public class OutputView {
         printlnOut(OutputMessage.START.getMessage());
     }
 
+    public void setMenu() {
+        printlnOut(OutputMessage.SET_MENU.getMessage());
+    }
+
     private void printlnOut(String message) {
         System.out.println(message);
     }

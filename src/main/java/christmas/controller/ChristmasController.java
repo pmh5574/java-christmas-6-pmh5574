@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.domain.MenuList;
 import christmas.domain.VisitDay;
 import christmas.service.ChristmasService;
 import christmas.view.InputView;
@@ -12,6 +13,8 @@ public class ChristmasController {
     private final ChristmasService christmasService;
     private VisitDay visitDay;
 
+    private MenuList menuList;
+
     public ChristmasController(InputView inputView, OutputView outputView, ChristmasService christmasService) {
         this.inputView = inputView;
         this.outputView = outputView;
@@ -20,6 +23,7 @@ public class ChristmasController {
 
     public void run() {
         start();
+        setMenu();
     }
 
     private void start() {
@@ -27,4 +31,8 @@ public class ChristmasController {
         visitDay = inputView.inputDay();
     }
 
+    private void setMenu() {
+        outputView.setMenu();
+        menuList = inputView.inputMenu();
+    }
 }
