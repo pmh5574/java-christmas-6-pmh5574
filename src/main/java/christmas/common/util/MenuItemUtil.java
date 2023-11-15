@@ -39,7 +39,15 @@ public enum MenuItemUtil {
                 return name;
             }
         }
-
         return "";
+    }
+
+    public static Integer fromPrice(String name) {
+        for (MenuItemUtil item : MenuItemUtil.values()) {
+            if (item.name.equals(name)) {
+                return item.price;
+            }
+        }
+        return 0;
     }
 }

@@ -5,6 +5,7 @@ import christmas.domain.VisitDay;
 import christmas.service.ChristmasService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
+import java.text.NumberFormat;
 
 public class ChristmasController {
 
@@ -25,6 +26,7 @@ public class ChristmasController {
         start();
         setMenu();
         startMenu();
+        beforeSalePrice();
     }
 
     private void start() {
@@ -41,5 +43,14 @@ public class ChristmasController {
     private void startMenu() {
         outputView.orderMenuCheck();
         christmasService.getMenuList(menuList, outputView);
+    }
+
+    private void beforeSalePrice() {
+        outputView.beforeSaleComment();
+
+        NumberFormat numberFormat = NumberFormat.getInstance();
+
+        Integer totalPrice = christmasService.getPrice(menuList);
+        outputView.beforeSalePrice(numberFormat.format(totalPrice));
     }
 }
