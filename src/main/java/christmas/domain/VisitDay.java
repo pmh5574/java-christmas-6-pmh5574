@@ -12,6 +12,5 @@ public class VisitDay {
 
     private void validate(int day) {
         Validation.VisitDayMonth(day);
-        Validation.onlyNumber(String.valueOf(day));
     }
 }
