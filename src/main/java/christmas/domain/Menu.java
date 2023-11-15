@@ -31,4 +31,9 @@ public class Menu {
     public int hashCode() {
         return Objects.hash(menu);
     }
+
+    @Override
+    public String toString() {
+        return menu;
+    }
 }

@@ -21,4 +21,9 @@ public class Count {
     public Integer getCount() {
         return count;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(count);
+    }
 }

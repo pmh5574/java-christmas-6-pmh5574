@@ -24,6 +24,7 @@ public class ChristmasController {
     public void run() {
         start();
         setMenu();
+        startMenu();
     }
 
     private void start() {
@@ -34,5 +35,11 @@ public class ChristmasController {
     private void setMenu() {
         outputView.setMenu();
         menuList = inputView.inputMenu();
+        outputView.eventCommentStart();
+    }
+
+    private void startMenu() {
+        outputView.orderMenuCheck();
+        christmasService.getMenuList(menuList, outputView);
     }
 }
