@@ -52,6 +52,26 @@ public class OutputView {
         printlnOut(giftMenu);
     }
 
+    public void saleComment() {
+        printlnOut("");
+        printlnOut("<혜택 내역>");
+    }
+    public void dDaySale(String daySale) {
+        printlnOut("크리스마스 디데이 할인: -" + daySale + WON.getMessage());
+    }
+
+    public void weekSale(String dayPrint, String specialSale) {
+        printlnOut(dayPrint + " 할인: -" + specialSale + WON.getMessage());
+    }
+
+    public void specialSale(String menuSalePrice) {
+        printlnOut("특별 할인: -" + menuSalePrice + WON.getMessage());
+    }
+
+    public void giftSale(String giftSale) {
+        printlnOut("증정 이벤트: -" + giftSale + WON.getMessage());
+    }
+
     private void printlnOut(String message) {
         System.out.println(message);
     }
