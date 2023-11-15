@@ -1,7 +1,9 @@
 package christmas.controller;
 
+import christmas.common.util.DayUtil;
 import christmas.common.util.GiftUtil;
 import christmas.common.util.MenuItemUtil;
+import christmas.common.util.PriceUtil;
 import christmas.domain.MenuList;
 import christmas.domain.VisitDay;
 import christmas.service.ChristmasService;
@@ -22,11 +24,13 @@ public class ChristmasController {
     private MenuList menuList;
     private GiftUtil giftMenu;
     private NumberFormat numberFormat = NumberFormat.getInstance();
+    private MemberGradeService memberGradeService;
 
-    public ChristmasController(InputView inputView, OutputView outputView, ChristmasService christmasService) {
+    public ChristmasController(InputView inputView, OutputView outputView, ChristmasService christmasService, MemberGradeService memberGradeService) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.christmasService = christmasService;
+        this.memberGradeService = memberGradeService;
     }
 
     public void run() {
@@ -42,7 +46,6 @@ public class ChristmasController {
     }
 
     private void memberGrade() {
-        MemberGradeService memberGradeService = new MemberGradeService();
         String grade = memberGradeService.getGrade(totalSalePrice);
         outputView.grade(grade);
     }
@@ -91,9 +94,9 @@ public class ChristmasController {
         boolean isWeekday = christmasService.isWeekday(visitDay);
         Integer menuSalePrice = christmasService.getMenuSalePrice(menuList, isWeekday);
         Integer giftSale = getGiftSalePrice();
-        String dayPrint = "주말";
+        String dayPrint = DayUtil.WEEK.getMessage();
         if (isWeekday) {
-            dayPrint = "평일";
+            dayPrint = DayUtil.NO_WEEK.getMessage();
         }
         totalSalePrice = daySale + specialSale + specialSale + giftSale;
         outputView.saleComment();
@@ -102,7 +105,7 @@ public class ChristmasController {
     }
 
     private Integer getGiftSalePrice() {
-        Integer giftSale = 0;
+        Integer giftSale = PriceUtil.ZERO.getNumber();
         if (giftMenu.equals(GiftUtil.MENU)) {
             giftSale = MenuItemUtil.CHAMP.getPrice();
         }
