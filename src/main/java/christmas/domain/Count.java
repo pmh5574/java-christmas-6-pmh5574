@@ -13,5 +13,6 @@ public class Count {
 
     private void validate(String count) {
         Validation.onlyNumber(count);
+        Validation.zeroCheck(Integer.parseInt(count));
     }
 }
