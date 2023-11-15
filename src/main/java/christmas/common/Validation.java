@@ -15,7 +15,7 @@ public class Validation {
 
     private static final Integer MENU_ITEM_SPLIT_LENGTH = 2;
 
-    public static void VisitDayMonth(int inputData) {
+    public static void visitDayMonth(int inputData) {
         if (MONTH_FIRST.getNumber() > inputData || MONTH_LAST.getNumber() < inputData) {
             throw new IllegalArgumentException(NOT_USE_VISIT_DAY.getMessage());
         }
