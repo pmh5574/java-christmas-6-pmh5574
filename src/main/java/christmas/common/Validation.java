@@ -48,9 +48,9 @@ public class Validation {
         }
     }
 
-    public static void zeroCheck(Integer number) {
+    public static void zeroCheck(Integer number, String message) {
         if (Objects.equals(number, ZERO.getNumber())) {
-            throw new IllegalArgumentException(NOT_USE_MENU.getMessage());
+            throw new IllegalArgumentException(message);
         }
     }
 

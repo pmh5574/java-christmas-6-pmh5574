@@ -42,4 +42,12 @@ class MenuListTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 한 번에 최대 20개까지만 주문할 수 있습니다.");
     }
+
+    @Test
+    @DisplayName("음료만 주문시 오류")
+    void test5() {
+        assertThatThrownBy(() -> new MenuList("제로콜라-1,레드와인-1,샴페인-1"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 음료만 주문은 불가능합니다.");
+    }
 }
