@@ -8,6 +8,7 @@ import christmas.domain.MenuList;
 import christmas.domain.VisitDay;
 import christmas.service.ChristmasService;
 import christmas.service.MemberGradeService;
+import christmas.service.SalePriceService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 import java.text.NumberFormat;
@@ -101,7 +102,8 @@ public class ChristmasController {
         totalSalePrice = daySale + specialSale + specialSale + giftSale;
         outputView.saleComment();
 
-        outputView.saleCheckAndPrice(daySale, specialSale, dayPrint, menuSalePrice, giftSale, numberFormat, totalPrice);
+        SalePriceService salePriceService = new SalePriceService();
+        salePriceService.saleCheckAndPrice(daySale, specialSale, dayPrint, menuSalePrice, giftSale, numberFormat, totalPrice, outputView);
     }
 
     private Integer getGiftSalePrice() {

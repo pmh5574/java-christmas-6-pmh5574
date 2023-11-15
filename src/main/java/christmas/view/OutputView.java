@@ -5,7 +5,6 @@ import christmas.common.util.PriceStringUtil;
 import christmas.common.util.PriceUtil;
 import christmas.domain.Count;
 import christmas.domain.Menu;
-import java.text.NumberFormat;
 
 public class OutputView {
 
@@ -72,28 +71,6 @@ public class OutputView {
         printlnOut("");
         printlnOut(OutputMessage.TOTAL_SALE.getMessage());
         printlnOut("-" + totalSalePrice + OutputMessage.WON.getMessage());
-    }
-
-    public boolean saleCheckAndPrice(Integer daySale, Integer specialSale, String dayPrint, Integer menuSalePrice, Integer giftSale,
-                                  NumberFormat numberFormat, Integer totalPrice) {
-        if (totalPrice <= PriceUtil.MIN_PRICE.getNumber()) {
-            totalPriceCheck(PriceUtil.ZERO.getNumber());
-            return false;
-        }
-        totalPriceCheck((daySale + menuSalePrice + specialSale + giftSale));
-        if (daySale > PriceUtil.ZERO.getNumber()) {
-            dDaySale(numberFormat.format(daySale));
-        }
-        if (menuSalePrice > PriceUtil.ZERO.getNumber()) {
-            weekSale(dayPrint, numberFormat.format(menuSalePrice));
-        }
-        if (specialSale > PriceUtil.ZERO.getNumber()) {
-            specialSale(numberFormat.format(specialSale));
-        }
-        if (giftSale > PriceUtil.ZERO.getNumber()) {
-            giftSale(numberFormat.format(giftSale));
-        }
-        return true;
     }
 
     public void totalPriceCheck(Integer price) {
