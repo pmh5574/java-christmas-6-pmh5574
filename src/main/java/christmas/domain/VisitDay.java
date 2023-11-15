@@ -4,6 +4,12 @@ import static christmas.common.util.VisitDayUtil.CHRISTMAS;
 import static christmas.common.util.VisitDayUtil.DAY_SALE_PRICE;
 import static christmas.common.util.VisitDayUtil.MONTH_FIRST;
 import static christmas.common.util.VisitDayUtil.ONE;
+import static christmas.common.util.VisitDayUtil.SALE_DAY_10;
+import static christmas.common.util.VisitDayUtil.SALE_DAY_17;
+import static christmas.common.util.VisitDayUtil.SALE_DAY_24;
+import static christmas.common.util.VisitDayUtil.SALE_DAY_25;
+import static christmas.common.util.VisitDayUtil.SALE_DAY_3;
+import static christmas.common.util.VisitDayUtil.SALE_DAY_31;
 import static christmas.common.util.VisitDayUtil.THOUSAND;
 import static christmas.common.util.VisitDayUtil.ZERO;
 
@@ -14,7 +20,13 @@ public class VisitDay {
 
     private final Integer day;
 
-    private List<Integer> saleDay = List.of(3,10,17,24,25,31);
+    private List<Integer> saleDay = List.of(
+            SALE_DAY_3.getNumber(),
+            SALE_DAY_10.getNumber(),
+            SALE_DAY_17.getNumber(),
+            SALE_DAY_24.getNumber(),
+            SALE_DAY_25.getNumber(),
+            SALE_DAY_31.getNumber());
     public VisitDay(int day) {
         validate(day);
         this.day = day;
