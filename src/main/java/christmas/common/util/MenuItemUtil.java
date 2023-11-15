@@ -1,6 +1,6 @@
 package christmas.common.util;
 
-public enum MenuUtil {
+public enum MenuItemUtil {
     SOUP("양송이수프", 6000),
     TBAS("타파스", 5500),
     CESAR("시저샐러드", 8000),
@@ -21,7 +21,7 @@ public enum MenuUtil {
     private final String name;
     private final Integer price;
 
-    MenuUtil(String name, Integer price) {
+    MenuItemUtil(String name, Integer price) {
         this.name = name;
         this.price = price;
     }
@@ -31,5 +31,15 @@ public enum MenuUtil {
     }
     public Integer getPrice() {
         return price;
+    }
+
+    public static String fromName(String name) {
+        for (MenuItemUtil item : MenuItemUtil.values()) {
+            if (item.name.equals(name)) {
+                return name;
+            }
+        }
+
+        return "";
     }
 }

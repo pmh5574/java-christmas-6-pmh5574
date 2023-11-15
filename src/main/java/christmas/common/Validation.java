@@ -2,12 +2,16 @@ package christmas.common;
 
 import static christmas.common.util.ErrorMessage.NOT_USE_MENU;
 import static christmas.common.util.ErrorMessage.NOT_USE_VISIT_DAY;
+import static christmas.common.util.MenuListUtil.ZERO;
 import static christmas.common.util.VisitDayUtil.MONTH_FIRST;
 import static christmas.common.util.VisitDayUtil.MONTH_LAST;
 
+import christmas.common.util.MenuItemUtil;
+import java.util.Objects;
+
 public class Validation {
 
-    private static final String ONLY_NUMBER_CHECK = "\\\\d+";
+    private static final String ONLY_NUMBER_CHECK = "\\d+";
 
     private static final Integer MENU_ITEM_SPLIT_LENGTH = 2;
 
@@ -29,4 +33,22 @@ public class Validation {
         }
     }
 
+    public static void notMatchMenu(String[] parts) {
+        if (parts.length != MENU_ITEM_SPLIT_LENGTH) {
+            throw new IllegalArgumentException(NOT_USE_MENU.getMessage());
+        }
+    }
+
+    public static void isValidMenu(String menuName) {
+
+        if (MenuItemUtil.fromName(menuName).isEmpty()) {
+            throw new IllegalArgumentException(NOT_USE_MENU.getMessage());
+        }
+    }
+
+    public static void zeroCheck(Integer number) {
+        if (Objects.equals(number, ZERO.getNumber())) {
+            throw new IllegalArgumentException(NOT_USE_MENU.getMessage());
+        }
+    }
 }
