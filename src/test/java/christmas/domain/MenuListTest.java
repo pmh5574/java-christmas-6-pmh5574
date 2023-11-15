@@ -26,4 +26,12 @@ class MenuListTest {
 
         assertThat(menuList.getMenuListSize()).isEqualTo(2);
     }
+
+    @Test
+    @DisplayName("메뉴 중복시 오류")
+    void test3() {
+        assertThatThrownBy(() -> new MenuList("양송이수프-1,티본스테이크-2,양송이수프-1"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+    }
 }

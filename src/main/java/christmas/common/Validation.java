@@ -51,4 +51,10 @@ public class Validation {
             throw new IllegalArgumentException(NOT_USE_MENU.getMessage());
         }
     }
+
+    public static void duplicateMenu(boolean check) {
+        if (!check) {
+            throw new IllegalArgumentException(NOT_USE_MENU.getMessage());
+        }
+    }
 }

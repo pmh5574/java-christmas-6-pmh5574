@@ -6,9 +6,10 @@ import static christmas.common.util.MenuListUtil.ZERO;
 import christmas.common.Validation;
 import christmas.common.util.MenuItemUtil;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Set;
 
 public class MenuList {
 
@@ -16,14 +17,26 @@ public class MenuList {
 
 
     public MenuList(String strMenuList) {
-
         List<String> menuItems = Arrays.asList(strMenuList.split(","));
 
         Validation.zeroCheck(menuItems.size());
 
+        Set<Menu> uniqueMenus = new HashSet<>();
+
         this.menuList = menuItems.stream()
                 .map(this::parseMenuItem)
-                .collect(Collectors.toList());
+                .filter(parsedItem -> duplicate(parsedItem, uniqueMenus))
+                .toList();
+    }
+
+    private static boolean duplicate(Map<Menu, Count> parsedItem, Set<Menu> uniqueMenus) {
+        Menu menu = parsedItem.keySet()
+                .iterator()
+                .next();
+
+        Validation.duplicateMenu(uniqueMenus.add(menu));
+
+        return true;
     }
 
     private Map<Menu, Count> parseMenuItem(String menuItem) {
@@ -41,5 +54,9 @@ public class MenuList {
 
     public int getMenuListSize() {
         return menuList.size();
+    }
+
+    public List<Map<Menu, Count>> getMenuList() {
+        return menuList;
     }
 }
