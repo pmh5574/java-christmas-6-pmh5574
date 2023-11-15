@@ -5,6 +5,7 @@ import static christmas.common.util.MenuListUtil.SALE_PRICE;
 import static christmas.common.util.MenuListUtil.TEN;
 import static christmas.common.util.MenuListUtil.ZERO;
 
+import christmas.common.util.DayUtil;
 import christmas.common.util.GiftUtil;
 import christmas.common.util.MenuItemUtil;
 import christmas.domain.Count;
@@ -78,7 +79,7 @@ public class ChristmasService {
 
     public boolean isWeekday(VisitDay visitDay) {
         String day = addDateZero(visitDay.getDay());
-        LocalDate date = LocalDate.parse("2023-12-"+day, DateTimeFormatter.ISO_LOCAL_DATE);
+        LocalDate date = LocalDate.parse(DayUtil.NOW_YEAR_MONTH.getMessage(day), DateTimeFormatter.ISO_LOCAL_DATE);
 
         DayOfWeek dayOfWeek = date.getDayOfWeek();
 
