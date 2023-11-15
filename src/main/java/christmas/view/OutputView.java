@@ -1,6 +1,8 @@
 package christmas.view;
 
 import christmas.common.message.OutputMessage;
+import christmas.common.util.PriceStringUtil;
+import christmas.common.util.PriceUtil;
 import christmas.domain.Count;
 import christmas.domain.Menu;
 import java.text.NumberFormat;
@@ -48,67 +50,67 @@ public class OutputView {
 
     public void saleComment() {
         printlnOut("");
-        printlnOut("<혜택 내역>");
+        printlnOut(OutputMessage.SALE_COMMENT.getMessage());
     }
     public void dDaySale(String daySale) {
-        printlnOut("크리스마스 디데이 할인: -" + daySale + OutputMessage.WON.getMessage());
+        printlnOut(OutputMessage.D_DAY_SALE.getMessage() + daySale + OutputMessage.WON.getMessage());
     }
 
     public void weekSale(String dayPrint, String specialSale) {
-        printlnOut(dayPrint + " 할인: -" + specialSale + OutputMessage.WON.getMessage());
+        printlnOut(dayPrint + OutputMessage.SALE.getMessage() + specialSale + OutputMessage.WON.getMessage());
     }
 
     public void specialSale(String menuSalePrice) {
-        printlnOut("특별 할인: -" + menuSalePrice + OutputMessage.WON.getMessage());
+        printlnOut(OutputMessage.SPECIAL_SALE.getMessage() + menuSalePrice + OutputMessage.WON.getMessage());
     }
 
     public void giftSale(String giftSale) {
-        printlnOut("증정 이벤트: -" + giftSale + OutputMessage.WON.getMessage());
+        printlnOut(OutputMessage.GIFT_SALE_COMMENT.getMessage() + giftSale + OutputMessage.WON.getMessage());
     }
 
     public void totalSale(String totalSalePrice) {
         printlnOut("");
-        printlnOut("<총혜택 금액>");
+        printlnOut(OutputMessage.TOTAL_SALE.getMessage());
         printlnOut("-" + totalSalePrice + OutputMessage.WON.getMessage());
     }
 
     public boolean saleCheckAndPrice(Integer daySale, Integer specialSale, String dayPrint, Integer menuSalePrice, Integer giftSale,
                                   NumberFormat numberFormat, Integer totalPrice) {
-        if (totalPrice <= 10000) {
-            totalPriceCheck(0);
+        if (totalPrice <= PriceUtil.MIN_PRICE.getNumber()) {
+            totalPriceCheck(PriceUtil.ZERO.getNumber());
             return false;
         }
         totalPriceCheck((daySale + menuSalePrice + specialSale + giftSale));
-        if (daySale > 0) {
+        if (daySale > PriceUtil.ZERO.getNumber()) {
             dDaySale(numberFormat.format(daySale));
         }
-        if (menuSalePrice > 0) {
+        if (menuSalePrice > PriceUtil.ZERO.getNumber()) {
             weekSale(dayPrint, numberFormat.format(menuSalePrice));
         }
-        if (specialSale > 0) {
+        if (specialSale > PriceUtil.ZERO.getNumber()) {
             specialSale(numberFormat.format(specialSale));
         }
-        if (giftSale > 0) {
+        if (giftSale > PriceUtil.ZERO.getNumber()) {
             giftSale(numberFormat.format(giftSale));
         }
         return true;
     }
 
     public void totalPriceCheck(Integer price) {
-        if (price == 0) {
-            printlnOut("없음");
+        if (price == PriceUtil.ZERO.getNumber()) {
+            printlnOut(PriceStringUtil.NO.getMessage());
         }
     }
 
     public void resultPrice(String resultPrice) {
         printlnOut("");
-        printlnOut("<할인 후 예상 결제 금액>");
+        printlnOut(OutputMessage.RESULT_PRICE.getMessage());
         printlnOut(resultPrice + OutputMessage.WON.getMessage());
     }
 
     public void grade(String grade) {
         printlnOut("");
-        printlnOut("<12월 이벤트 배지>");
+        printlnOut(OutputMessage.GRADE.getMessage());
         printlnOut(grade);
     }
 

@@ -33,7 +33,7 @@ public class ChristmasService {
 
     public Integer getPrice(MenuList menuList) {
 
-        AtomicInteger totalPrice = new AtomicInteger(0);
+        AtomicInteger totalPrice = new AtomicInteger(ZERO.getNumber());
         menuList.getMenuList()
                 .forEach(menuMap -> {
                     getTotalPrice(totalPrice, menuMap);
@@ -59,7 +59,7 @@ public class ChristmasService {
     }
 
     public Integer getMenuSalePrice(MenuList menuList, boolean isWeekday) {
-        AtomicInteger salePrice = new AtomicInteger(0);
+        AtomicInteger salePrice = new AtomicInteger(ZERO.getNumber());
 
         menuList.getMenuList()
                 .forEach(menuCountMap -> {

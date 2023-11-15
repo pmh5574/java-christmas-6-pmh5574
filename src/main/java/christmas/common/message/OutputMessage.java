@@ -10,7 +10,15 @@ public enum OutputMessage {
     ORDER_MENU_CHECK("<주문 메뉴>"),
     BEFORE_SALE("<할인 전 총주문 금액>"),
     WON("원"),
-    GIFT_MENU("<증정 메뉴>");
+    GIFT_MENU("<증정 메뉴>"),
+    RESULT_PRICE("<할인 후 예상 결제 금액>"),
+    GRADE("<12월 이벤트 배지>"),
+    TOTAL_SALE("<총혜택 금액>"),
+    GIFT_SALE_COMMENT("증정 이벤트: -"),
+    SPECIAL_SALE("특별 할인: -"),
+    SALE(" 할인: -"),
+    D_DAY_SALE("크리스마스 디데이 할인: -"),
+    SALE_COMMENT("<혜택 내역>");
 
     private final String message;
 
