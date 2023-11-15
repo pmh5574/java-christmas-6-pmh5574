@@ -16,6 +16,8 @@ public class ChristmasController {
     private final ChristmasService christmasService;
     private VisitDay visitDay;
     private Integer totalPrice;
+
+    private Integer totalSalePrice;
     private MenuList menuList;
     private GiftUtil giftMenu;
     private NumberFormat numberFormat = NumberFormat.getInstance();
@@ -33,6 +35,16 @@ public class ChristmasController {
         beforeSalePrice();
         giftMenu();
         saleList();
+        totalSale();
+        resultPrice();
+    }
+
+    private void resultPrice() {
+        outputView.resultPrice(numberFormat.format((totalPrice-totalSalePrice)));
+    }
+
+    private void totalSale() {
+        outputView.totalSale(numberFormat.format(totalSalePrice));
     }
 
     private void start() {
@@ -75,23 +87,8 @@ public class ChristmasController {
         if (isWeekday) {
             dayPrint = "평일";
         }
-        saleCheckAndPrice(daySale, specialSale, dayPrint, menuSalePrice, giftSale);
-
-    }
-
-    private void saleCheckAndPrice(Integer daySale, Integer specialSale, String dayPrint, Integer menuSalePrice, Integer giftSale) {
-        if (daySale > 0) {
-            outputView.dDaySale(numberFormat.format(daySale));
-        }
-        if (menuSalePrice > 0) {
-            outputView.weekSale(dayPrint, numberFormat.format(menuSalePrice));
-        }
-        if (specialSale > 0) {
-            outputView.specialSale(numberFormat.format(specialSale));
-        }
-        if (giftSale > 0) {
-            outputView.giftSale(numberFormat.format(giftSale));
-        }
+        totalSalePrice = daySale + specialSale + specialSale + giftSale;
+        outputView.saleCheckAndPrice(daySale, specialSale, dayPrint, menuSalePrice, giftSale, numberFormat);
     }
 
     private Integer getGiftSalePrice() {

@@ -10,6 +10,7 @@ import static christmas.common.message.OutputMessage.WON;
 
 import christmas.domain.Count;
 import christmas.domain.Menu;
+import java.text.NumberFormat;
 
 public class OutputView {
 
@@ -72,7 +73,37 @@ public class OutputView {
         printlnOut("증정 이벤트: -" + giftSale + WON.getMessage());
     }
 
+    public void totalSale(String totalSalePrice) {
+        printlnOut("");
+        printlnOut("<총혜택 금액>");
+        printlnOut("-" + totalSalePrice + WON.getMessage());
+    }
+
+    public void saleCheckAndPrice(Integer daySale, Integer specialSale, String dayPrint, Integer menuSalePrice, Integer giftSale,
+                                  NumberFormat numberFormat) {
+        if (daySale > 0) {
+            dDaySale(numberFormat.format(daySale));
+        }
+        if (menuSalePrice > 0) {
+            weekSale(dayPrint, numberFormat.format(menuSalePrice));
+        }
+        if (specialSale > 0) {
+            specialSale(numberFormat.format(specialSale));
+        }
+        if (giftSale > 0) {
+            giftSale(numberFormat.format(giftSale));
+        }
+    }
+
+    public void resultPrice(String resultPrice) {
+        printlnOut("");
+        printlnOut("<할인 후 예상 결제 금액>");
+        printlnOut(resultPrice + WON.getMessage());
+    }
+
     private void printlnOut(String message) {
         System.out.println(message);
     }
+
+
 }
