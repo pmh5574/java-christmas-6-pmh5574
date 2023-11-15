@@ -9,7 +9,8 @@ public enum OutputMessage {
     EVENT_COMMENT_START("12월 26일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!"),
     ORDER_MENU_CHECK("<주문 메뉴>"),
     BEFORE_SALE("<할인 전 총주문 금액>"),
-    WON("원");
+    WON("원"),
+    GIFT_MENU("<증정 메뉴>");
 
     private final String message;
 

@@ -15,7 +15,7 @@ public enum MenuItemUtil {
 
     COKE("제로콜라",3000),
     WINE("레드와인",60000),
-    Champ("샴페인",25000);
+    CHAMP("샴페인",25000);
 
 
     private final String name;

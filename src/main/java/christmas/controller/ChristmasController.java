@@ -14,6 +14,8 @@ public class ChristmasController {
     private final ChristmasService christmasService;
     private VisitDay visitDay;
 
+    private Integer totalPrice;
+
     private MenuList menuList;
 
     public ChristmasController(InputView inputView, OutputView outputView, ChristmasService christmasService) {
@@ -27,6 +29,7 @@ public class ChristmasController {
         setMenu();
         startMenu();
         beforeSalePrice();
+        giftMenu();
     }
 
     private void start() {
@@ -50,7 +53,13 @@ public class ChristmasController {
 
         NumberFormat numberFormat = NumberFormat.getInstance();
 
-        Integer totalPrice = christmasService.getPrice(menuList);
+        totalPrice = christmasService.getPrice(menuList);
         outputView.beforeSalePrice(numberFormat.format(totalPrice));
+    }
+
+    private void giftMenu() {
+        outputView.giftMenuComment();
+        String giftMenu = christmasService.getGiftMenu(totalPrice);
+        outputView.giftMenu(giftMenu);
     }
 }

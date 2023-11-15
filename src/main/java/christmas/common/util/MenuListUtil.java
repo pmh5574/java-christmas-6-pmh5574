@@ -4,7 +4,8 @@ public enum MenuListUtil {
 
     ZERO(0),
     FIRST(1),
-    MENU_LIMIT(20);
+    MENU_LIMIT(20),
+    GIFT_PRICE(120000);
 
     private final Integer number;
 

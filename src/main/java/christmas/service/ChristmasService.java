@@ -1,5 +1,8 @@
 package christmas.service;
 
+import static christmas.common.util.MenuListUtil.GIFT_PRICE;
+
+import christmas.common.util.GiftUtil;
 import christmas.common.util.MenuItemUtil;
 import christmas.domain.Count;
 import christmas.domain.Menu;
@@ -38,5 +41,14 @@ public class ChristmasService {
                 totalPrice.addAndGet(price * count.getCount());
             }
         });
+    }
+
+    public String getGiftMenu(Integer totalPrice) {
+        if (totalPrice >= GIFT_PRICE.getNumber()) {
+            return GiftUtil.MENU
+                    .getGift();
+        }
+        return GiftUtil.NO
+                .getGift();
     }
 }
