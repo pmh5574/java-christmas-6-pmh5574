@@ -5,6 +5,7 @@ import christmas.common.util.MenuItemUtil;
 import christmas.domain.MenuList;
 import christmas.domain.VisitDay;
 import christmas.service.ChristmasService;
+import christmas.service.MemberGradeService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 import java.text.NumberFormat;
@@ -37,6 +38,13 @@ public class ChristmasController {
         saleList();
         totalSale();
         resultPrice();
+        memberGrade();
+    }
+
+    private void memberGrade() {
+        MemberGradeService memberGradeService = new MemberGradeService();
+        String grade = memberGradeService.getGrade(totalSalePrice);
+        outputView.grade(grade);
     }
 
     private void resultPrice() {
@@ -55,7 +63,7 @@ public class ChristmasController {
     private void setMenu() {
         outputView.setMenu();
         menuList = inputView.inputMenu();
-        outputView.eventCommentStart();
+        outputView.eventCommentStart(visitDay.getDay());
     }
 
     private void startMenu() {
