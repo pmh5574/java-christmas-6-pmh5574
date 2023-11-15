@@ -17,4 +17,8 @@ public class Count {
         Validation.onlyNumber(count, NOT_USE_MENU.getMessage());
         Validation.zeroCheck(Integer.parseInt(count));
     }
+
+    public Integer getCount() {
+        return count;
+    }
 }

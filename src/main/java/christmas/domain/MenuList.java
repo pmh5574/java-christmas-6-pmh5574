@@ -14,7 +14,7 @@ import java.util.Set;
 public class MenuList {
 
     private final List<Map<Menu, Count>> menuList;
-
+    private Integer totalCount = 0;
 
     public MenuList(String strMenuList) {
         List<String> menuItems = Arrays.asList(strMenuList.split(","));
@@ -45,7 +45,9 @@ public class MenuList {
 
         String menuName = parts[ZERO.getNumber()];
         Count count = new Count(parts[FIRST.getNumber()]);
+        totalCount += count.getCount();
 
+        Validation.limitCount(totalCount);
         Validation.isValidMenu(menuName);
 
         Menu menu = new Menu(MenuItemUtil.fromName(menuName));

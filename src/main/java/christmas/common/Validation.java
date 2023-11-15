@@ -2,10 +2,12 @@ package christmas.common;
 
 import static christmas.common.message.ErrorMessage.NOT_USE_MENU;
 import static christmas.common.message.ErrorMessage.NOT_USE_VISIT_DAY;
+import static christmas.common.util.MenuListUtil.MENU_LIMIT;
 import static christmas.common.util.MenuListUtil.ZERO;
 import static christmas.common.util.VisitDayUtil.MONTH_FIRST;
 import static christmas.common.util.VisitDayUtil.MONTH_LAST;
 
+import christmas.common.message.ErrorMessage;
 import christmas.common.util.MenuItemUtil;
 import java.util.Objects;
 
@@ -55,6 +57,13 @@ public class Validation {
     public static void duplicateMenu(boolean check) {
         if (!check) {
             throw new IllegalArgumentException(NOT_USE_MENU.getMessage());
+        }
+    }
+
+    public static void limitCount(Integer totalCount) {
+        if (totalCount > MENU_LIMIT.getNumber()) {
+            throw new IllegalArgumentException(ErrorMessage.MENU_LIMIT
+                    .getMessage());
         }
     }
 }
