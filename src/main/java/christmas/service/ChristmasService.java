@@ -93,8 +93,8 @@ public class ChristmasService {
     private String addDateZero(int number) {
         if (number >= ZERO.getNumber() && number < TEN.getNumber()) {
             return ZERO.getNumber().toString() + number;
-        } else {
-            return String.valueOf(number);
         }
+
+        return String.valueOf(number);
     }
 }
