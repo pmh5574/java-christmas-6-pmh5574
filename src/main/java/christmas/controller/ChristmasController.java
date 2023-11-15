@@ -96,7 +96,9 @@ public class ChristmasController {
             dayPrint = "평일";
         }
         totalSalePrice = daySale + specialSale + specialSale + giftSale;
-        outputView.saleCheckAndPrice(daySale, specialSale, dayPrint, menuSalePrice, giftSale, numberFormat);
+        outputView.saleComment();
+
+        outputView.saleCheckAndPrice(daySale, specialSale, dayPrint, menuSalePrice, giftSale, numberFormat, totalPrice);
     }
 
     private Integer getGiftSalePrice() {

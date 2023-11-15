@@ -72,8 +72,12 @@ public class OutputView {
         printlnOut("-" + totalSalePrice + OutputMessage.WON.getMessage());
     }
 
-    public void saleCheckAndPrice(Integer daySale, Integer specialSale, String dayPrint, Integer menuSalePrice, Integer giftSale,
-                                  NumberFormat numberFormat) {
+    public boolean saleCheckAndPrice(Integer daySale, Integer specialSale, String dayPrint, Integer menuSalePrice, Integer giftSale,
+                                  NumberFormat numberFormat, Integer totalPrice) {
+        if (totalPrice <= 10000) {
+            totalPriceCheck(0);
+            return false;
+        }
         totalPriceCheck((daySale + menuSalePrice + specialSale + giftSale));
         if (daySale > 0) {
             dDaySale(numberFormat.format(daySale));
@@ -87,9 +91,10 @@ public class OutputView {
         if (giftSale > 0) {
             giftSale(numberFormat.format(giftSale));
         }
+        return true;
     }
 
-    private void totalPriceCheck(Integer price) {
+    public void totalPriceCheck(Integer price) {
         if (price == 0) {
             printlnOut("없음");
         }
