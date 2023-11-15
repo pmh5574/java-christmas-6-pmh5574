@@ -1,4 +1,4 @@
-package christmas.common.util;
+package christmas.common.message;
 
 public enum ErrorMessage {
 

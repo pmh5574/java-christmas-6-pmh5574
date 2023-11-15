@@ -1,7 +1,7 @@
 package christmas.common;
 
-import static christmas.common.util.ErrorMessage.NOT_USE_MENU;
-import static christmas.common.util.ErrorMessage.NOT_USE_VISIT_DAY;
+import static christmas.common.message.ErrorMessage.NOT_USE_MENU;
+import static christmas.common.message.ErrorMessage.NOT_USE_VISIT_DAY;
 import static christmas.common.util.MenuListUtil.ZERO;
 import static christmas.common.util.VisitDayUtil.MONTH_FIRST;
 import static christmas.common.util.VisitDayUtil.MONTH_LAST;
